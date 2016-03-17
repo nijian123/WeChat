@@ -60,7 +60,7 @@
     __weak typeof(self) selfVc = self;
     //自己写的block，有强引用的时候，使用弱引用。系统block，我们基本可以不理
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate xmppLogin:^(XMPPResultType resultType) {
+    [[WCXMPPTool sharedWCXMPPTool] xmppLogin:^(XMPPResultType resultType) {
         [selfVc handleXMPPResultType:resultType];
     }];
 }
@@ -97,15 +97,15 @@
 
 
 #pragma mark -切换到主界面
-- (void)changeToMain{
-    // 回到主线程更新UI
-    
-        // 1. 获取Main.storyboard的第一个根控制器
-        id vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
-        
-        // 2. 切换window的根控制器
-        [UIApplication sharedApplication].keyWindow.rootViewController = vc;
-}
+//- (void)changeToMain{
+//    // 回到主线程更新UI
+//    
+//        // 1. 获取Main.storyboard的第一个根控制器
+//        id vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialViewController];
+//        
+//        // 2. 切换window的根控制器
+//        [UIApplication sharedApplication].keyWindow.rootViewController = vc;
+//}
 
 
 

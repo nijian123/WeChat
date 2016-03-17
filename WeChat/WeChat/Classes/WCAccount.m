@@ -22,24 +22,26 @@
     static WCAccount *acount;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        acount = [super allocWithZone:zone];
-        
-        //从沙盒获取上次的用户信息
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        acount.user = [defaults objectForKey:kUserKey];
-        acount.pwd = [defaults objectForKey:kPwdKey];
-        acount.login = [defaults objectForKey:kLoginKey];
-        
+            acount = [super allocWithZone:zone];
+            
+            //从沙盒获取上次的用户信息
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            acount.user = [defaults objectForKey:kUserKey];
+            acount.pwd = [defaults objectForKey:kPwdKey];
+            acount.login = [defaults boolForKey:kLoginKey];
+   
     });
     return acount;
 }
 
 - (void)saveToSandBox{
+    // 保存user pwd login
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.user forKey:kUserKey];
     [defaults setObject:self.pwd forKey:kPwdKey];
-    [defaults setBool:self.login forKey:kLoginKey];
+    [defaults setBool:self.isLogin forKey:kLoginKey];
     [defaults synchronize];
+    NSLog(@"保存 isLogin  %d",self.isLogin);
 }
 
 

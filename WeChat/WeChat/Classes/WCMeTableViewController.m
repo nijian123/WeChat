@@ -98,8 +98,14 @@
 #pragma mark 注销
 - (IBAction)logoutBtnClick:(id)sender {
     //注销
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate xmppLogout];
+    
+    [[WCXMPPTool sharedWCXMPPTool] xmppLogout];
+    
+    //注销的时候，把沙盒的登录状态设置为NO
+    [WCAccount shareAccount].login = NO;
+    [[WCAccount shareAccount] saveToSandBox];
+    
+    
     //回到登录控制器
     //showInitialVCWithName 显示storyboard的第一个控制器到窗口
     [UIStoryboard showInitialVCWithName:@"Login"];

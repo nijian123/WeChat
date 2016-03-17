@@ -14,4 +14,5 @@
 #import <UIKit/UIKit.h>
 #import "WCAccount.h"
 #import "CategoryWF.h"
+#import "WCXMPPTool.h"
 #endif /* WeChat_Prefix_pch */

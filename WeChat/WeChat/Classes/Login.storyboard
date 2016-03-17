@@ -23,7 +23,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="美女1" translatesAutoresizingMaskIntoConstraints="NO" id="NpJ-Al-ARk">
                                         <rect key="frame" x="100" y="28" width="100" height="100"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nijian" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cts-e9-OOD">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nijian1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cts-e9-OOD">
                                         <rect key="frame" x="37" y="153" width="227" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -33,6 +33,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0y-d2-haq">
+                                        <rect key="frame" x="39" y="247" width="222" height="30"/>
+                                        <state key="normal" title="登录"/>
+                                        <connections>
+                                            <action selector="loginBtnClick:" destination="d3j-rh-jr7" eventType="touchUpInside" id="HmO-fh-Vhq"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.64237820769999998" green="1" blue="0.63005001810000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -40,13 +47,6 @@
                                     <constraint firstAttribute="height" constant="300" id="med-WC-WVe"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0y-d2-haq">
-                                <rect key="frame" x="189" y="357" width="222" height="30"/>
-                                <state key="normal" title="登录"/>
-                                <connections>
-                                    <action selector="loginBtnClick:" destination="d3j-rh-jr7" eventType="touchUpInside" id="HmO-fh-Vhq"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
