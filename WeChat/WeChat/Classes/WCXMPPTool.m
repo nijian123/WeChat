@@ -205,5 +205,31 @@ singleton_implementation(WCXMPPTool)
     [self disconnetFromeHost];
 }
 
+
+#pragma mark 用户注册
+- (void)xmppRegister:(XMPPResultBlock)resultBlock{
+    //注册
+    
+    // 1.发送“注册的jid”给服务器，请求一个长连接
+    
+    
+    // 2.连接成功，发送密码
+    
+    
+}
+
 #pragma mark -公共方法 end ================
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+

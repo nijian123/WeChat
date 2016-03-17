@@ -26,8 +26,8 @@
             
             //从沙盒获取上次的用户信息
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            acount.user = [defaults objectForKey:kUserKey];
-            acount.pwd = [defaults objectForKey:kPwdKey];
+            acount.loginUser = [defaults objectForKey:kUserKey];
+            acount.loginPwd = [defaults objectForKey:kPwdKey];
             acount.login = [defaults boolForKey:kLoginKey];
    
     });
@@ -37,8 +37,8 @@
 - (void)saveToSandBox{
     // 保存user pwd login
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.user forKey:kUserKey];
-    [defaults setObject:self.pwd forKey:kPwdKey];
+    [defaults setObject:self.loginUser forKey:kUserKey];
+    [defaults setObject:self.loginPwd forKey:kPwdKey];
     [defaults setBool:self.isLogin forKey:kLoginKey];
     [defaults synchronize];
     NSLog(@"保存 isLogin  %d",self.isLogin);

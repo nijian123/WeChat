@@ -10,11 +10,17 @@
 
 @interface WCAccount : NSObject
 
-@property (nonatomic,copy) NSString *user;
-@property (nonatomic,copy) NSString *pwd;
+//用户登录的账号
+@property (nonatomic,copy) NSString *loginUser;
+@property (nonatomic,copy) NSString *loginPwd;
 //判断用户是否登陆
 //get 方法 isLogin
 @property (nonatomic,assign,getter=isLogin) BOOL login;
+
+//用户注册的账号
+@property (nonatomic,copy) NSString *registerUser;
+@property (nonatomic,copy) NSString *registerPwd;
+
 
 
 + (instancetype)shareAccount;

@@ -12,7 +12,10 @@
 
 typedef enum {
     XMPPResultLoginSucess, //登录成功
-    XMPPResultLoginFailure //登录失败
+    XMPPResultLoginFailure, //登录失败
+    XMPPResultRegisterSucess, //注册成功
+    XMPPResultRegisterFailure //注册失败
+    
 }XMPPResultType;
 
 // 与服务器交互的结果  全局块
@@ -27,5 +30,16 @@ singleton_interface(WCXMPPTool)
 //XMPP用户注销
 - (void)xmppLogout;
 
+//XMPP用户注册
+- (void)xmppRegister:(XMPPResultBlock)resultBlock;
 
 @end
+
+
+
+
+
+
+
+
+
