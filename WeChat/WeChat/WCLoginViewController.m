@@ -68,12 +68,13 @@
     }];
 }
 
-// 登陆处理结果
+// 处理登录的结果
 - (void)handleXMPPResultType:(XMPPResultType)resultType{
     
     //主线程处理结果 更新UI
     dispatch_async(dispatch_get_main_queue(), ^{
-        // 隐藏提示
+        
+        // 隐藏提示框
         [MBProgressHUD hideHUD];
         
         if (resultType == XMPPResultLoginSucess) {
@@ -93,13 +94,7 @@
             
             [MBProgressHUD showError:@"用户名或密码错误"];
         }
-        
     });
-    
-    
-    
-
-
 }
 
 
@@ -112,10 +107,6 @@
         
         // 2. 切换window的根控制器
         [UIApplication sharedApplication].keyWindow.rootViewController = vc;
-
-        
-    
-    
 }
 
 

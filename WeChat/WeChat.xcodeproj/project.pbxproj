@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D4324931C9A90F30030290B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4324921C9A90F30030290B /* Assets.xcassets */; };
 		0D505ACF1C704F83004E862F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505ACE1C704F83004E862F /* main.m */; };
 		0D505AD21C704F83004E862F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505AD11C704F83004E862F /* AppDelegate.m */; };
 		0D505AD51C704F83004E862F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505AD41C704F83004E862F /* ViewController.m */; };
 		0D505AD81C704F83004E862F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D505AD61C704F83004E862F /* Main.storyboard */; };
-		0D505ADA1C704F83004E862F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D505AD91C704F83004E862F /* Assets.xcassets */; };
 		0D505ADD1C704F83004E862F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D505ADB1C704F83004E862F /* LaunchScreen.storyboard */; };
 		0D505AE81C704F83004E862F /* WeChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505AE71C704F83004E862F /* WeChatTests.m */; };
 		0D505AF31C704F83004E862F /* WeChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505AF21C704F83004E862F /* WeChatUITests.m */; };
@@ -185,6 +185,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D4324921C9A90F30030290B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = WeChat/Assets.xcassets; sourceTree = "<group>"; };
 		0D505ACA1C704F83004E862F /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D505ACE1C704F83004E862F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D505AD01C704F83004E862F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -192,7 +193,6 @@
 		0D505AD31C704F83004E862F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0D505AD41C704F83004E862F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0D505AD71C704F83004E862F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0D505AD91C704F83004E862F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D505ADC1C704F83004E862F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D505ADE1C704F83004E862F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D505AE31C704F83004E862F /* WeChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -542,6 +542,7 @@
 		0D505AC11C704F83004E862F = {
 			isa = PBXGroup;
 			children = (
+				0D4324921C9A90F30030290B /* Assets.xcassets */,
 				0D505BA11C70583D004E862F /* libresolv.tbd */,
 				0D505B361C70519B004E862F /* libxml2.tbd */,
 				0D505ACC1C704F83004E862F /* WeChat */,
@@ -567,7 +568,6 @@
 				0D505B001C704FFB004E862F /* Classes */,
 				0D505AD31C704F83004E862F /* ViewController.h */,
 				0D505AD41C704F83004E862F /* ViewController.m */,
-				0D505AD91C704F83004E862F /* Assets.xcassets */,
 				0D505ADE1C704F83004E862F /* Info.plist */,
 				0D505ADB1C704F83004E862F /* LaunchScreen.storyboard */,
 				0D505ACD1C704F83004E862F /* Supporting Files */,
@@ -1517,7 +1517,6 @@
 			isa = PBXGroup;
 			children = (
 				0D505D0F1C719104004E862F /* Controller */,
-				0D505D0D1C717F8A004E862F /* Login.storyboard */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1534,6 +1533,7 @@
 		0D505D0F1C719104004E862F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0D505D0D1C717F8A004E862F /* Login.storyboard */,
 				0D505D131C71915E004E862F /* WCLoginViewController.h */,
 				0D505D141C71915E004E862F /* WCLoginViewController.m */,
 			);
@@ -1668,8 +1668,8 @@
 				0D505B3D1C70575C004E862F /* build-libidn.sh in Resources */,
 				0D505ADD1C704F83004E862F /* LaunchScreen.storyboard in Resources */,
 				0D505D0E1C717F8A004E862F /* Login.storyboard in Resources */,
-				0D505ADA1C704F83004E862F /* Assets.xcassets in Resources */,
 				0D505B201C7050C2004E862F /* README.txt in Resources */,
+				0D4324931C9A90F30030290B /* Assets.xcassets in Resources */,
 				0D505AD81C704F83004E862F /* Main.storyboard in Resources */,
 				0DB143DE1C71ADE600478052 /* MBProgressHUD.bundle in Resources */,
 			);
@@ -1986,7 +1986,7 @@
 				GCC_PREFIX_HEADER = "WeChat/WeChat-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = WeChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2008,7 +2008,7 @@
 				GCC_PREFIX_HEADER = "WeChat/WeChat-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = WeChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -18,6 +18,7 @@
 
 
 /** 用户登录流程
+ =====私有方法=====
 1. 初始化XMPPStream
 2. 连接服务器（传一个jid）
 3. 连接成功，之后发送密码
@@ -67,7 +68,9 @@
     return YES;
 }
 
-#pragma mark -私有方法
+#pragma mark -私有方法=========================
+#pragma mark 实现登录
+
 // 1.初始化XMPPStream
 - (void)setupStream{
     // 创建XMPPStream对象
@@ -81,6 +84,7 @@
 
 // 2.连接服务器（传一个jid）
 - (void)connectToHost{
+    
     if(!_xmppStream){
         [self setupStream];
     }
@@ -90,7 +94,7 @@
     //NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
     NSString *user = [WCAccount shareAccount].user;
     
-    XMPPJID *myJid = [XMPPJID jidWithUser:user domain:@"nijiandemacbook-air.local" resource:@"iPhone6"];
+    XMPPJID *myJid = [XMPPJID jidWithUser:user domain:@"nijiandemacbook-air.local" resource:@"iPhone"];
     _xmppStream.myJID = myJid;
     
     
@@ -103,7 +107,7 @@
     // 4. 发送连接
     NSError *error = nil;
     //缺少必要的参数时就会连接失败  ？没有设置jid
-    
+    // XMPPStreamTimeoutNone =1 不超时
     [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
     if (error) {
         NSLog(@"%@",error);
@@ -117,6 +121,7 @@
 - (void)sendPassWordToHost{
     NSError *error = nil;
     //NSString *pwd = [[NSUserDefaults standardUserDefaults]objectForKey:@"pwd"];
+    
     NSString *pwd = [WCAccount shareAccount].pwd;
     
     [_xmppStream authenticateWithPassword:pwd error:&error];
@@ -134,15 +139,20 @@
 }
 
 
-#pragma mark -XMPPStreamDelegate   代理方法
+
+//**********************************************************
+
+#pragma mark -XMPPStreamDelegate   代理方法 begin
 #pragma mark 连接建立成功
 - (void)xmppStreamDidConnect:(XMPPStream *)sender
 {
     NSLog(@"%s",__func__);
+    //连接服务器成功后发送密码
     [self sendPassWordToHost];
 }
 
 #pragma mark 登录成功
+//Authenticate 认证
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender{
     NSLog(@"%s",__func__);
     [self sendOnLine];
@@ -159,18 +169,21 @@
     
     //回调resultBlock
     if (_resultBlock) {
+        //回调resultBlock块方法
         _resultBlock(XMPPResultLoginFailure);
     }
 }
+#pragma mark -XMPPStreamDelegate   代理方法 end
 
 
-#pragma mark -公共方法
+#pragma mark -公共方法=======================
 #pragma mark 用户登录
 - (void)xmppLogin:(XMPPResultBlock)resultBlock{
     //不管什么情况，先断开以前的连接
     [_xmppStream disconnect];
     
     //保存resulBlock
+    //将方法通过块 传递过来  。这边可以通过调用块，来调用这个方法
     _resultBlock = resultBlock;
     
     

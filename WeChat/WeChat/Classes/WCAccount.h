@@ -13,6 +13,7 @@
 @property (nonatomic,copy) NSString *user;
 @property (nonatomic,copy) NSString *pwd;
 //判断用户是否登陆
+//get 方法 isLogin
 @property (nonatomic,assign,getter=isLogin) BOOL login;
 
 
