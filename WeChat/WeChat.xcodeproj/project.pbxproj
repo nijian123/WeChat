@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0D4324931C9A90F30030290B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4324921C9A90F30030290B /* Assets.xcassets */; };
+		0D4324981C9ADCAB0030290B /* WCMeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4324971C9ADCAB0030290B /* WCMeTableViewController.m */; };
+		0D4324A71C9AE4240030290B /* UIButton+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D43249C1C9AE4240030290B /* UIButton+WF.m */; };
+		0D4324A81C9AE4240030290B /* UIImage+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D43249E1C9AE4240030290B /* UIImage+WF.m */; };
+		0D4324A91C9AE4240030290B /* UIScreen+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4324A01C9AE4240030290B /* UIScreen+WF.m */; };
+		0D4324AA1C9AE4240030290B /* UIStoryboard+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4324A21C9AE4240030290B /* UIStoryboard+WF.m */; };
+		0D4324AB1C9AE4240030290B /* UITextField+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4324A41C9AE4240030290B /* UITextField+WF.m */; };
+		0D4324AC1C9AE4240030290B /* UIView+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4324A61C9AE4240030290B /* UIView+WF.m */; };
 		0D505ACF1C704F83004E862F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505ACE1C704F83004E862F /* main.m */; };
 		0D505AD21C704F83004E862F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505AD11C704F83004E862F /* AppDelegate.m */; };
 		0D505AD51C704F83004E862F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505AD41C704F83004E862F /* ViewController.m */; };
@@ -186,6 +193,21 @@
 
 /* Begin PBXFileReference section */
 		0D4324921C9A90F30030290B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = WeChat/Assets.xcassets; sourceTree = "<group>"; };
+		0D4324961C9ADCAB0030290B /* WCMeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCMeTableViewController.h; sourceTree = "<group>"; };
+		0D4324971C9ADCAB0030290B /* WCMeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCMeTableViewController.m; sourceTree = "<group>"; };
+		0D43249A1C9AE4240030290B /* CategoryWF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryWF.h; sourceTree = "<group>"; };
+		0D43249B1C9AE4240030290B /* UIButton+WF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WF.h"; sourceTree = "<group>"; };
+		0D43249C1C9AE4240030290B /* UIButton+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WF.m"; sourceTree = "<group>"; };
+		0D43249D1C9AE4240030290B /* UIImage+WF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WF.h"; sourceTree = "<group>"; };
+		0D43249E1C9AE4240030290B /* UIImage+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WF.m"; sourceTree = "<group>"; };
+		0D43249F1C9AE4240030290B /* UIScreen+WF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+WF.h"; sourceTree = "<group>"; };
+		0D4324A01C9AE4240030290B /* UIScreen+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+WF.m"; sourceTree = "<group>"; };
+		0D4324A11C9AE4240030290B /* UIStoryboard+WF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboard+WF.h"; sourceTree = "<group>"; };
+		0D4324A21C9AE4240030290B /* UIStoryboard+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboard+WF.m"; sourceTree = "<group>"; };
+		0D4324A31C9AE4240030290B /* UITextField+WF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+WF.h"; sourceTree = "<group>"; };
+		0D4324A41C9AE4240030290B /* UITextField+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+WF.m"; sourceTree = "<group>"; };
+		0D4324A51C9AE4240030290B /* UIView+WF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WF.h"; sourceTree = "<group>"; };
+		0D4324A61C9AE4240030290B /* UIView+WF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WF.m"; sourceTree = "<group>"; };
 		0D505ACA1C704F83004E862F /* WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D505ACE1C704F83004E862F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D505AD01C704F83004E862F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -539,6 +561,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D4324941C9ADC3A0030290B /* Profile（我） */ = {
+			isa = PBXGroup;
+			children = (
+				0D4324951C9ADC4B0030290B /* Controller */,
+			);
+			name = "Profile（我）";
+			sourceTree = "<group>";
+		};
+		0D4324951C9ADC4B0030290B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D4324961C9ADCAB0030290B /* WCMeTableViewController.h */,
+				0D4324971C9ADCAB0030290B /* WCMeTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		0D4324991C9AE4240030290B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0D43249A1C9AE4240030290B /* CategoryWF.h */,
+				0D43249B1C9AE4240030290B /* UIButton+WF.h */,
+				0D43249C1C9AE4240030290B /* UIButton+WF.m */,
+				0D43249D1C9AE4240030290B /* UIImage+WF.h */,
+				0D43249E1C9AE4240030290B /* UIImage+WF.m */,
+				0D43249F1C9AE4240030290B /* UIScreen+WF.h */,
+				0D4324A01C9AE4240030290B /* UIScreen+WF.m */,
+				0D4324A11C9AE4240030290B /* UIStoryboard+WF.h */,
+				0D4324A21C9AE4240030290B /* UIStoryboard+WF.m */,
+				0D4324A31C9AE4240030290B /* UITextField+WF.h */,
+				0D4324A41C9AE4240030290B /* UITextField+WF.m */,
+				0D4324A51C9AE4240030290B /* UIView+WF.h */,
+				0D4324A61C9AE4240030290B /* UIView+WF.m */,
+			);
+			name = Category;
+			path = "../../../../../../../../xmpp代码资料/20150324-day03/备课笔记/WeiXin/WeiXin/Classes/Lib/Category";
+			sourceTree = "<group>";
+		};
 		0D505AC11C704F83004E862F = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +665,7 @@
 		0D505B001C704FFB004E862F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0D4324941C9ADC3A0030290B /* Profile（我） */,
 				0D505D0C1C717F6D004E862F /* Main */,
 				0D505D0B1C717F3A004E862F /* Login */,
 				0D505D0A1C706395004E862F /* Others */,
@@ -616,6 +677,7 @@
 		0D505B011C704FFB004E862F /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				0D4324991C9AE4240030290B /* Category */,
 				0DB143D71C71ADE600478052 /* MBProgessHUD(提示信息) */,
 				0D505B021C704FFB004E862F /* XMPP */,
 			);
@@ -1736,6 +1798,7 @@
 				0D505CE71C70588B004E862F /* XMPPCapsCoreDataStorageObject.m in Sources */,
 				0DB143DF1C71ADE600478052 /* MBProgressHUD.m in Sources */,
 				0D505CFB1C70588B004E862F /* XMPPAutoTime.m in Sources */,
+				0D4324A91C9AE4240030290B /* UIScreen+WF.m in Sources */,
 				0D505CD31C70588B004E862F /* XMPPvCardTempEmail.m in Sources */,
 				0D505CDC1C70588B004E862F /* XMPPIQ+XEP_0066.m in Sources */,
 				0D505CB11C70588B004E862F /* XMPPResourceMemoryStorageObject.m in Sources */,
@@ -1751,8 +1814,10 @@
 				0D505CE61C70588B004E862F /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
 				0D505B9C1C7057E8004E862F /* RFImageToDataTransformer.m in Sources */,
 				0D505B871C7057E8004E862F /* XMPPDeprecatedDigestAuthentication.m in Sources */,
+				0D4324A81C9AE4240030290B /* UIImage+WF.m in Sources */,
 				0D505B931C7057E8004E862F /* XMPPIQ.m in Sources */,
 				0D505CB01C70588B004E862F /* XMPPUserCoreDataStorageObject.m in Sources */,
+				0D4324981C9ADCAB0030290B /* WCMeTableViewController.m in Sources */,
 				0D505CD91C70588B004E862F /* XMPPIQ+XEP_0060.m in Sources */,
 				0D505CC71C70588B004E862F /* XMPPMessage+XEP0045.m in Sources */,
 				0D505B351C705166004E862F /* DDXMLNode.m in Sources */,
@@ -1787,6 +1852,7 @@
 				0D505B181C7050C2004E862F /* DDAbstractDatabaseLogger.m in Sources */,
 				0D505CC11C70588B004E862F /* XMPPRoomHybridStorage.m in Sources */,
 				0D505CC21C70588B004E862F /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,
+				0D4324AC1C9AE4240030290B /* UIView+WF.m in Sources */,
 				0D505B961C7057E8004E862F /* XMPPModule.m in Sources */,
 				0D505CBC1C70588B004E862F /* XMPPRoom.xcdatamodeld in Sources */,
 				0D505B971C7057E8004E862F /* XMPPParser.m in Sources */,
@@ -1813,6 +1879,7 @@
 				0D505CE41C70588B004E862F /* NSString+XEP_0106.m in Sources */,
 				0D505CEA1C70588B004E862F /* XMPPMessageArchiving.xcdatamodeld in Sources */,
 				0D505B8D1C7057E8004E862F /* XMPPXOAuth2Google.m in Sources */,
+				0D4324AA1C9AE4240030290B /* UIStoryboard+WF.m in Sources */,
 				0D505CC41C70588B004E862F /* XMPPRoomMemoryStorage.m in Sources */,
 				0D505B981C7057E8004E862F /* XMPPPresence.m in Sources */,
 				0D505CF41C70588B004E862F /* XMPPMessageDeliveryReceipts.m in Sources */,
@@ -1825,10 +1892,12 @@
 				0D505CD01C70588B004E862F /* XMPPvCardTempAdr.m in Sources */,
 				0D505B8E1C7057E8004E862F /* NSData+XMPP.m in Sources */,
 				0D505CA61C70588B004E862F /* XMPPFileTransfer.m in Sources */,
+				0D4324A71C9AE4240030290B /* UIButton+WF.m in Sources */,
 				0D505ACF1C704F83004E862F /* main.m in Sources */,
 				0D505CE51C70588B004E862F /* XMPPCapabilities.xcdatamodel in Sources */,
 				0D505CD81C70588B004E862F /* XMPPResultSet.m in Sources */,
 				0D505CE91C70588B004E862F /* XMPPCapabilities.m in Sources */,
+				0D4324AB1C9AE4240030290B /* UITextField+WF.m in Sources */,
 				0D505CBD1C70588B004E862F /* XMPPRoomCoreDataStorage.m in Sources */,
 				0D505D061C70588B004E862F /* NSXMLElement+XEP_0335.m in Sources */,
 				0D505B191C7050C2004E862F /* DDASLLogger.m in Sources */,

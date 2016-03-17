@@ -38,6 +38,11 @@
 // 4. 发送一个“在线消息”给服务器-->可以通知其他用户你在线
 - (void)sendOnLine;
 
+// 发送离线消息
+- (void)sendOffLine;
+
+// 与服务器断开连接
+- (void)disconnetFromeHost;
 
 
 @end
@@ -46,9 +51,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-//    [self setupStream];
-//    [self connectToHost];
     
     //判断用户是否登陆
     
@@ -60,11 +62,8 @@
             
             // 2. 切换window的根控制器
             [UIApplication sharedApplication].keyWindow.rootViewController = vc;
-            
         });
-        
     }
-    
     return YES;
 }
 
@@ -138,7 +137,20 @@
     [_xmppStream sendElement:presence];
 }
 
+#pragma mark 发送离线消息
+- (void)sendOffLine{
+    XMPPPresence *offline = [XMPPPresence presenceWithType:@"unavailable"];
+    [_xmppStream sendElement:offline];
+}
 
+#pragma mark 与服务器断开连接
+- (void)disconnetFromeHost{
+    
+    [_xmppStream disconnect];
+    
+}
+
+#pragma mark -私有方法 end ===============
 
 //**********************************************************
 
@@ -149,6 +161,14 @@
     NSLog(@"%s",__func__);
     //连接服务器成功后发送密码
     [self sendPassWordToHost];
+}
+
+#pragma mark 与服务器断开连接
+- (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
+    NSLog(@"%s",__func__);
+    
+    
+    
 }
 
 #pragma mark 登录成功
@@ -185,11 +205,49 @@
     //保存resulBlock
     //将方法通过块 传递过来  。这边可以通过调用块，来调用这个方法
     _resultBlock = resultBlock;
-    
-    
+
     //连接服务器开始登录操作
     [self connectToHost];
 }
 
+#pragma mark 用户注销
+- (void)xmppLogout{
+    //注销
+    // 1.发送“离线消息”给服务器
+    [self sendOffLine];
+    
+    // 2.断开与服务器连接
+    [self disconnetFromeHost];
+}
+
+#pragma mark -公共方法 end ================
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -47,10 +47,7 @@
     WCAccount *account = [WCAccount shareAccount];
     account.user = self.userField.text;
     account.pwd = self.passwordField.text;
-    //account.login = YES;
-    
-    
-    
+ 
     // 2.2 调用APPDelegate的xmppLogin方法
     
     // 怎么把APPDelegate的登录结果告诉WCLoginController控制器
@@ -82,7 +79,8 @@
             NSLog(@"%s",__func__);
             
             // 3. 登录成功切换到主界面
-            [self changeToMain];
+           // [self changeToMain];
+            [UIStoryboard showInitialVCWithName:@"Main"];
             
             // 保存登陆的账户信息到沙盒里面
             [WCAccount shareAccount].login = YES;

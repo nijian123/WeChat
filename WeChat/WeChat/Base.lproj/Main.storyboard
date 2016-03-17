@@ -149,7 +149,7 @@
         <!--Root View Controller-->
         <scene sceneID="ZwP-OL-UdQ">
             <objects>
-                <tableViewController id="kKw-Wc-iCd" sceneMemberID="viewController">
+                <tableViewController id="kKw-Wc-iCd" customClass="WCMeTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="erB-ig-rax">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,7 +171,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="bjo-Ib-p9g">
-                        <barButtonItem key="rightBarButtonItem" title="注销" width="41" id="DH9-zc-J3f"/>
+                        <barButtonItem key="rightBarButtonItem" title="注销" width="41" id="DH9-zc-J3f">
+                            <connections>
+                                <action selector="logoutBtnClick:" destination="kKw-Wc-iCd" id="mBe-MM-HZg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
