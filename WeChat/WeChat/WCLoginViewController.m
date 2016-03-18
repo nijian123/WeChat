@@ -29,7 +29,7 @@
     
     // 1. 判断有没有输入用户名和密码
     if (self.userField.text.length == 0 || self.passwordField.text.length == 0) {
-        NSLog(@"请输入用户名和密码");
+        WCLog(@"请输入用户名和密码");
         return;
     }
     
@@ -72,8 +72,8 @@
         [MBProgressHUD hideHUD];
         
         if (resultType == XMPPResultLoginSucess) {
-            NSLog(@"登录成功");
-            NSLog(@"%s",__func__);
+            WCLog(@"登录成功");
+            
             
             // 3. 登录成功切换到主界面
            // [self changeToMain];
@@ -84,8 +84,8 @@
             [[WCAccount shareAccount] saveToSandBox];
         
         }else{
-            NSLog(@"登录失败");
-            NSLog(@"%s",__func__);
+            WCLog(@"登录失败");
+            
             
             [MBProgressHUD showError:@"用户名或密码错误"];
         }

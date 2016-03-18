@@ -16,4 +16,21 @@
 #import "CategoryWF.h"
 #import "WCXMPPTool.h"
 #import "MBProgressHUD+HM.h"
+
+    //自定义日志
+    #ifdef DEBUG
+    //#define WCLog(...) NSLog(__VA_ARGS__)
+    #define WCLog(...) NSLog(@"%s\n %@\n\n",__func__, [NSString stringWithFormat:__VA_ARGS__])
+    #else
+
+    #endif
+
+
+
+
+
+
+
+
+
 #endif /* WeChat_Prefix_pch */

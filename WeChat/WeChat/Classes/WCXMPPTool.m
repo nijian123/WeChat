@@ -66,6 +66,7 @@ singleton_implementation(WCXMPPTool)
     
 }
 
+#pragma mark 连接服务器（传一个jid）
 // 2.连接服务器（传一个jid）
 - (void)connectToHost{
     
@@ -76,11 +77,11 @@ singleton_implementation(WCXMPPTool)
     
     XMPPJID *myJid = nil;
     
-    
+    WCAccount *account = [WCAccount shareAccount];
     if (self.isRegisterOperation) {
         //注册
         NSString *registerUser = [WCAccount shareAccount].registerUser;
-         myJid = [XMPPJID jidWithUser:registerUser domain:@"nijiandemacbook-air.local" resource:@"iPhone"];
+         myJid = [XMPPJID jidWithUser:registerUser domain:account.domain resource:@"iPhone"];
         
     }else{
         //登录
@@ -88,7 +89,7 @@ singleton_implementation(WCXMPPTool)
         // resource 用户登录客户端设备的类型
         NSString *loginUser = [WCAccount shareAccount].loginUser;
         
-        myJid = [XMPPJID jidWithUser:loginUser domain:@"nijiandemacbook-air.local" resource:@"iPhone"];
+        myJid = [XMPPJID jidWithUser:loginUser domain:account.domain resource:@"iPhone"];
         
     }
     
@@ -98,10 +99,10 @@ singleton_implementation(WCXMPPTool)
     
     
     // 2. 设置主机地址
-    _xmppStream.hostName = @"127.0.0.1";
+    _xmppStream.hostName = account.host;
     
     // 3. 设置主机端口号  默认就是5222，可以不用设置
-    _xmppStream.hostPort = 5222;
+    _xmppStream.hostPort = account.port;
     
     // 4. 发送连接
     NSError *error = nil;
@@ -109,13 +110,14 @@ singleton_implementation(WCXMPPTool)
     // XMPPStreamTimeoutNone =1 不超时
     [_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error];
     if (error) {
-        NSLog(@"%@",error);
+        WCLog(@"%@",error);
     }else{
-        NSLog(@"发起连接成功");
+        WCLog(@"发起连接成功");
     }
     
 }
 
+#pragma 连接成功后发送密码
 // 3.连接成功后发送密码
 - (void)sendPassWordToHost{
     NSError *error = nil;
@@ -124,22 +126,24 @@ singleton_implementation(WCXMPPTool)
     
     [_xmppStream authenticateWithPassword:loginPwd error:&error];
     if (error) {
-        NSLog(@"%@",error);
+        WCLog(@"%@",error);
     }
 }
 
+#pragma mark 发送在线指令
 // 4. 发送一个“在线消息”给服务器-->可以通知其他用户你在线
 - (void)sendOnLine{
     //XMPP框架已经把所有的指令封装成对象
     XMPPPresence *presence = [XMPPPresence presence];
-    NSLog(@"%@",presence);
     [_xmppStream sendElement:presence];
+    WCLog(@"发送在线指令");
 }
 
-#pragma mark 发送离线消息
+#pragma mark 发送离线指令
 - (void)sendOffLine{
     XMPPPresence *offline = [XMPPPresence presenceWithType:@"unavailable"];
     [_xmppStream sendElement:offline];
+     WCLog(@"发送离线指令");
 }
 
 #pragma mark 与服务器断开连接
@@ -157,7 +161,7 @@ singleton_implementation(WCXMPPTool)
 #pragma mark 连接建立成功
 - (void)xmppStreamDidConnect:(XMPPStream *)sender
 {
-    NSLog(@"%s",__func__);
+    WCLog(@"连接成功");
     if (self.isRegisterOperation) {
         //注册
         
@@ -168,7 +172,7 @@ singleton_implementation(WCXMPPTool)
         
         [_xmppStream registerWithPassword:registerPwd error:&error];
         if (error) {
-            NSLog(@"%@",error);
+            WCLog(@"%@",error);
         }
         
     }else{
@@ -184,7 +188,7 @@ singleton_implementation(WCXMPPTool)
 
 #pragma mark 与服务器断开连接
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
-    NSLog(@"%s",__func__);
+    WCLog(@"断开连接");
     
     
     
@@ -193,7 +197,7 @@ singleton_implementation(WCXMPPTool)
 #pragma mark 登录成功
 //Authenticate 认证
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender{
-    NSLog(@"%s",__func__);
+    WCLog(@"登录成功");
     [self sendOnLine];
     
     //回调resultBlock
@@ -204,7 +208,7 @@ singleton_implementation(WCXMPPTool)
 
 #pragma mark 登录失败
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error{
-    NSLog(@"%s   %@",__func__,error);
+    WCLog(@"%s   %@",__func__,error);
     
     //回调resultBlock
     if (_resultBlock) {
@@ -226,6 +230,7 @@ singleton_implementation(WCXMPPTool)
     if(_resultBlock){
         _resultBlock(XMPPResultRegisterFailure);
     }
+   
 }
 
 

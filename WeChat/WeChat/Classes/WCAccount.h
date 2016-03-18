@@ -28,4 +28,12 @@
 // 保存最新的用户登陆数据到沙盒里面
 - (void)saveToSandBox;
 
+//服务器域名
+@property (nonatomic, copy, readonly) NSString *domain;
+//服务器ID
+@property (nonatomic, copy, readonly) NSString *host;
+
+@property (nonatomic, assign, readonly) int port;
+
+
 @end
