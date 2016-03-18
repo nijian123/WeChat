@@ -49,7 +49,7 @@ static int port = 5222;
 
 
 -(NSString *)domain{
-    return domain
+    return domain;
 }
 -(NSString *)host{
     return host;

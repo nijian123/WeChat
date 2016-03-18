@@ -12,6 +12,11 @@
 @interface WCXMPPTool ()<XMPPStreamDelegate>{
     XMPPStream *_xmppStream; //与服务器交互的核心类
     
+    XMPPvCardTempModule *_vCard; //电子名片模块
+    XMPPvCardCoreDataStorage *_vCardStorage; //电子名片数据存储
+    
+    XMPPvCardAvatarModule *_avatar; //电子名片的头像模块
+    
     XMPPResultBlock _resultBlock; //结果回调Block
 }
 
@@ -60,6 +65,19 @@ singleton_implementation(WCXMPPTool)
     // 创建XMPPStream对象
     _xmppStream = [[XMPPStream alloc]init];
     
+#pragma mark 添加xmpp模块
+    // 1. 添加电子名片模块
+    _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
+    _vCard = [[XMPPvCardTempModule alloc]initWithvCardStorage:_vCardStorage];
+    //激活
+    [_vCard activate:_xmppStream];
+    
+    //电子名片模块会配合“头像模块”一起使用
+    // 2.添加头像模块
+    _avatar = [[XMPPvCardAvatarModule alloc]initWithvCardTempModule:_vCard];
+    [_avatar activate:_xmppStream];
+    
+    
 #warning 设置代理 -所有的代理方法都在子线程中被调用
     
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
@@ -73,8 +91,7 @@ singleton_implementation(WCXMPPTool)
     if(!_xmppStream){
         [self setupStream];
     }
-    
-    
+
     XMPPJID *myJid = nil;
     
     WCAccount *account = [WCAccount shareAccount];
@@ -82,7 +99,6 @@ singleton_implementation(WCXMPPTool)
         //注册
         NSString *registerUser = [WCAccount shareAccount].registerUser;
          myJid = [XMPPJID jidWithUser:registerUser domain:account.domain resource:@"iPhone"];
-        
     }else{
         //登录
         // 1. 设置登录用户的jid
@@ -90,7 +106,6 @@ singleton_implementation(WCXMPPTool)
         NSString *loginUser = [WCAccount shareAccount].loginUser;
         
         myJid = [XMPPJID jidWithUser:loginUser domain:account.domain resource:@"iPhone"];
-        
     }
     
     
@@ -150,7 +165,6 @@ singleton_implementation(WCXMPPTool)
 - (void)disconnetFromeHost{
     
     [_xmppStream disconnect];
-    
 }
 
 #pragma mark -私有方法 end ===============
@@ -181,17 +195,13 @@ singleton_implementation(WCXMPPTool)
         //连接服务器成功后发送密码
         [self sendPassWordToHost];
     }
-    
-    
-   
+ 
 }
 
 #pragma mark 与服务器断开连接
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
     WCLog(@"断开连接");
-    
-    
-    
+  
 }
 
 #pragma mark 登录成功
