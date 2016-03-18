@@ -41,7 +41,6 @@
     [defaults setObject:self.loginPwd forKey:kPwdKey];
     [defaults setBool:self.isLogin forKey:kLoginKey];
     [defaults synchronize];
-    NSLog(@"保存 isLogin  %d",self.isLogin);
 }
 
 

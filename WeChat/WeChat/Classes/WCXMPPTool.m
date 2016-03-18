@@ -73,12 +73,27 @@ singleton_implementation(WCXMPPTool)
         [self setupStream];
     }
     
-    // 1. 设置登录用户的jid
-    // resource 用户登录客户端设备的类型
-    //NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
-    NSString *user = [WCAccount shareAccount].user;
     
-    XMPPJID *myJid = [XMPPJID jidWithUser:user domain:@"nijiandemacbook-air.local" resource:@"iPhone"];
+    XMPPJID *myJid = nil;
+    
+    
+    if (self.isRegisterOperation) {
+        //注册
+        NSString *registerUser = [WCAccount shareAccount].registerUser;
+         myJid = [XMPPJID jidWithUser:registerUser domain:@"nijiandemacbook-air.local" resource:@"iPhone"];
+        
+    }else{
+        //登录
+        // 1. 设置登录用户的jid
+        // resource 用户登录客户端设备的类型
+        NSString *loginUser = [WCAccount shareAccount].loginUser;
+        
+        myJid = [XMPPJID jidWithUser:loginUser domain:@"nijiandemacbook-air.local" resource:@"iPhone"];
+        
+    }
+    
+    
+    
     _xmppStream.myJID = myJid;
     
     
@@ -104,11 +119,10 @@ singleton_implementation(WCXMPPTool)
 // 3.连接成功后发送密码
 - (void)sendPassWordToHost{
     NSError *error = nil;
-    //NSString *pwd = [[NSUserDefaults standardUserDefaults]objectForKey:@"pwd"];
     
-    NSString *pwd = [WCAccount shareAccount].pwd;
+    NSString *loginPwd = [WCAccount shareAccount].loginPwd;
     
-    [_xmppStream authenticateWithPassword:pwd error:&error];
+    [_xmppStream authenticateWithPassword:loginPwd error:&error];
     if (error) {
         NSLog(@"%@",error);
     }
@@ -144,8 +158,28 @@ singleton_implementation(WCXMPPTool)
 - (void)xmppStreamDidConnect:(XMPPStream *)sender
 {
     NSLog(@"%s",__func__);
-    //连接服务器成功后发送密码
-    [self sendPassWordToHost];
+    if (self.isRegisterOperation) {
+        //注册
+        
+        NSString *registerPwd = [WCAccount shareAccount].registerPwd;
+        NSError *error = nil;
+        
+        // 连接成功 发送注册请求密码！！！
+        
+        [_xmppStream registerWithPassword:registerPwd error:&error];
+        if (error) {
+            NSLog(@"%@",error);
+        }
+        
+    }else{
+        //登录
+        
+        //连接服务器成功后发送密码
+        [self sendPassWordToHost];
+    }
+    
+    
+   
 }
 
 #pragma mark 与服务器断开连接
@@ -178,6 +212,23 @@ singleton_implementation(WCXMPPTool)
         _resultBlock(XMPPResultLoginFailure);
     }
 }
+
+#pragma mark 注册成功
+
+-(void)xmppStreamDidRegister:(XMPPStream *)sender{
+    if(_resultBlock){
+        _resultBlock(XMPPResultRegisterSucess);
+    }
+}
+
+#pragma mark 注册失败
+-(void)xmppStream:(XMPPStream *)sender didNotRegister:(DDXMLElement *)error{
+    if(_resultBlock){
+        _resultBlock(XMPPResultRegisterFailure);
+    }
+}
+
+
 #pragma mark -XMPPStreamDelegate   代理方法 end
 
 
@@ -208,10 +259,16 @@ singleton_implementation(WCXMPPTool)
 
 #pragma mark 用户注册
 - (void)xmppRegister:(XMPPResultBlock)resultBlock{
+    //请求连接之前先除去已连的连接
+    [_xmppStream disconnect];
+    
+    //保存 传过来的 “块方法”
+    _resultBlock = resultBlock;
+    
     //注册
     
     // 1.发送“注册的jid”给服务器，请求一个长连接
-    
+    [self connectToHost];
     
     // 2.连接成功，发送密码
     

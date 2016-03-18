@@ -24,6 +24,10 @@ typedef void (^XMPPResultBlock) (XMPPResultType);
 @interface WCXMPPTool : NSObject
 singleton_interface(WCXMPPTool)
 
+// 标识连接服务器时，是登录连接还是注册连接
+// NO代表登录   YES 代表注册
+@property (assign,nonatomic,getter=isRegisterOperation) BOOL registerOperation;
+
 //XMPP用户登录
 - (void)xmppLogin:(XMPPResultBlock)resultBlock;
 

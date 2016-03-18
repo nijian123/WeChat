@@ -37,16 +37,11 @@
     [MBProgressHUD showMessage:@"正在登陆ing。。。。。"];
     
     // 2. 登录服务器
-    // 2.1 把用户名和密码保存到沙盒
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:self.userField.text forKey:@"user"];
-//    [defaults setObject:self.passwordField.text forKey:@"pwd"];
-//    [defaults synchronize];
     
     // 2.1 把用户名和密码先放到Account单例里面
     WCAccount *account = [WCAccount shareAccount];
-    account.user = self.userField.text;
-    account.pwd = self.passwordField.text;
+    account.loginUser = self.userField.text;
+    account.loginPwd = self.passwordField.text;
  
     // 2.2 调用APPDelegate的xmppLogin方法
     
@@ -55,11 +50,13 @@
     // 2,block
     // 3,通知
     
-    
     //block会对self进行强引用
-    __weak typeof(self) selfVc = self;
     //自己写的block，有强引用的时候，使用弱引用。系统block，我们基本可以不理
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    
+    __weak typeof(self) selfVc = self;
+    // 设置标识
+    [WCXMPPTool sharedWCXMPPTool].registerOperation = NO;
+    
     [[WCXMPPTool sharedWCXMPPTool] xmppLogin:^(XMPPResultType resultType) {
         [selfVc handleXMPPResultType:resultType];
     }];

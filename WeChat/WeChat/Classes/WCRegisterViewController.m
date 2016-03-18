@@ -51,6 +51,35 @@
 - (IBAction)registerBtnClick:(id)sender {
     
     //保存用户的注册名和密码
+    [WCAccount shareAccount].registerUser = self.userField.text;
+    [WCAccount shareAccount].registerPwd = self.pwdField.text;
+    
+    [MBProgressHUD showMessage:@"正在注册中。。。。"];
+    //调用注册的方法
+    
+    __weak typeof(self) selfVc = self;
+    [WCXMPPTool sharedWCXMPPTool].registerOperation = YES;
+    [[WCXMPPTool sharedWCXMPPTool] xmppRegister:^(XMPPResultType resultType) {
+        [selfVc handleXMPPResultType:resultType];
+        
+    }];
+    
+}
+
+
+- (void)handleXMPPResultType:(XMPPResultType)resultType{
+    dispatch_async(dispatch_get_main_queue(), ^{
+       // 1.隐藏提示
+        [MBProgressHUD hideHUD];
+        
+        // 2.提示注册成功
+        if (resultType == XMPPResultRegisterSucess) {
+            [MBProgressHUD showSuccess:@"恭喜注册成功，回到登录界面登录。。。"];
+        }
+        if (resultType == XMPPResultRegisterFailure) {
+            [MBProgressHUD showError:@"用户名重复"];
+        }
+    });
     
     
     
