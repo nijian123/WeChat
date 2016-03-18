@@ -126,6 +126,7 @@ NSString *const kXMPPvCardTempElement = @"vCard";
 
 - (NSData *)photo {
 	NSData *decodedData = nil;
+    //寻找photo的节点
 	NSXMLElement *photo = [self elementForName:@"PHOTO"];
 	
 	if (photo != nil) {

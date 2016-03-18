@@ -7,12 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import "DDTTYLogger.h"
+#import "DDLog.h"
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //配置XMPP日志
+    
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    
+    
+ 
     //判断用户是否登陆
     if([WCAccount shareAccount].login){
         // 1. 获取Main.storyboard的第一个根控制器

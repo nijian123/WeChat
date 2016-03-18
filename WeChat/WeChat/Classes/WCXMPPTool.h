@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Singleton.h"
+#import "XMPPFramework.h"
 
 
 typedef enum {
@@ -27,6 +28,14 @@ singleton_interface(WCXMPPTool)
 // 标识连接服务器时，是登录连接还是注册连接
 // NO代表登录   YES 代表注册
 @property (assign,nonatomic,getter=isRegisterOperation) BOOL registerOperation;
+
+//电子名片模块
+@property (strong, nonatomic ,readonly) XMPPvCardTempModule *vCard;
+
+//电子名片数据存储
+@property (strong,nonatomic,readonly) XMPPvCardCoreDataStorage *vCardStorage;
+
+
 
 //XMPP用户登录
 - (void)xmppLogin:(XMPPResultBlock)resultBlock;
