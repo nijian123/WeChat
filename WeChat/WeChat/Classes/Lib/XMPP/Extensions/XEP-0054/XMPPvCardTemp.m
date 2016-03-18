@@ -316,7 +316,11 @@ NSString *const kXMPPvCardTempElement = @"vCard";
 - (void)clearLabels { }
 
 
-- (NSArray *)telecomsAddresses { return nil; }
+- (NSArray *)telecomsAddresses {
+    //说明xmpp框架没有解析电话标签
+    return nil;
+
+}
 - (void)addTelecomsAddress:(XMPPvCardTempTel *)tel { }
 - (void)removeTelecomsAddress:(XMPPvCardTempTel *)tel { }
 - (void)setTelecomsAddresses:(NSArray *)tels { }

@@ -8,9 +8,10 @@
 
 #import "WCMeTableViewController.h"
 #import "XMPPvCardTemp.h"
+#import "AppDelegate.h"
 
 @interface WCMeTableViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *weChatNumLabel;
 
@@ -32,7 +33,7 @@
     
     //获取头像
     if (myvCard.photo) {
-        self.avatarImage.image = [UIImage imageWithData:myvCard.photo];
+        self.avatarImageView.image = [UIImage imageWithData:myvCard.photo];
     }
     
     //微信号（显示用户名）

@@ -77,6 +77,8 @@ singleton_implementation(WCXMPPTool)
     [_avatar activate:_xmppStream];
     
     
+    
+    
 #warning 设置代理 -所有的代理方法都在子线程中被调用
     
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];

@@ -17,7 +17,7 @@
     
     //配置XMPP日志
     
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    //[DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     
     
