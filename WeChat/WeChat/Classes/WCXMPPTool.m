@@ -32,6 +32,10 @@
 
 // 1.初始化XMPPStream
 - (void)setupStream;
+/**
+ *  释放资源
+ */
+- (void)teardownStream;
 
 // 2.连接服务器（传一个jid）
 - (void)connectToHost;
@@ -56,7 +60,7 @@
 
 singleton_implementation(WCXMPPTool)
 
-#pragma mark -私有方法=========================
+#pragma mark - 私有方法=========================
 #pragma mark 实现登录
 
 // 1.初始化XMPPStream
@@ -76,12 +80,29 @@ singleton_implementation(WCXMPPTool)
     _avatar = [[XMPPvCardAvatarModule alloc]initWithvCardTempModule:_vCard];
     [_avatar activate:_xmppStream];
     
-    
-    
-    
 #warning 设置代理 -所有的代理方法都在子线程中被调用
     
     [_xmppStream addDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+    
+}
+
+#pragma mark 离开程序 清空资源
+- (void)teardownStream{
+    //移除代理
+    [_xmppStream removeDelegate:self];
+    
+    //取消模块
+    [_avatar deactivate];
+    [_vCard deactivate];
+    
+    //断开连接
+    [_xmppStream disconnect];
+    
+    //清空资源
+    _vCardStorage = nil;
+    _vCard = nil;
+    _avatar = nil;
+    _xmppStream = nil;
     
 }
 
@@ -172,7 +193,7 @@ singleton_implementation(WCXMPPTool)
 
 //**********************************************************
 
-#pragma mark -XMPPStreamDelegate   代理方法 begin
+#pragma mark - XMPPStreamDelegate   代理方法 begin
 #pragma mark 连接建立成功
 - (void)xmppStreamDidConnect:(XMPPStream *)sender
 {
@@ -248,7 +269,7 @@ singleton_implementation(WCXMPPTool)
 #pragma mark -XMPPStreamDelegate   代理方法 end
 
 
-#pragma mark -公共方法=======================
+#pragma mark - 公共方法=======================
 #pragma mark 用户登录
 - (void)xmppLogin:(XMPPResultBlock)resultBlock{
     //不管什么情况，先断开以前的连接
@@ -292,6 +313,9 @@ singleton_implementation(WCXMPPTool)
 }
 
 #pragma mark -公共方法 end ================
+- (void)dealloc{
+    [self teardownStream];
+}
 @end
 
 
