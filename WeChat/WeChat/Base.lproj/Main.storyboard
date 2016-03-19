@@ -147,7 +147,7 @@
             </objects>
             <point key="canvasLocation" x="1375" y="1253"/>
         </scene>
-        <!--Root View Controller-->
+        <!--我-->
         <scene sceneID="ZwP-OL-UdQ">
             <objects>
                 <tableViewController id="kKw-Wc-iCd" customClass="WCMeTableViewController" sceneMemberID="viewController">
@@ -158,11 +158,11 @@
                         <sections>
                             <tableViewSection id="XYB-Ao-NPo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="77" id="ij4-Ym-h4W">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="77" id="ij4-Ym-h4W">
                                         <rect key="frame" x="0.0" y="99" width="600" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ij4-Ym-h4W" id="iEH-na-rgE">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mcn-vM-anr">
@@ -189,7 +189,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="bjo-Ib-p9g">
+                    <navigationItem key="navigationItem" title="我" id="bjo-Ib-p9g">
                         <barButtonItem key="rightBarButtonItem" title="注销" width="41" id="DH9-zc-J3f">
                             <connections>
                                 <action selector="logoutBtnClick:" destination="kKw-Wc-iCd" id="mBe-MM-HZg"/>

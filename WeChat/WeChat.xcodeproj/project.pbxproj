@@ -693,9 +693,9 @@
 		0D505B001C704FFB004E862F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0D4324941C9ADC3A0030290B /* Profile（我） */,
-				0D505D0C1C717F6D004E862F /* Main */,
 				0D505D0B1C717F3A004E862F /* Login */,
+				0D505D0C1C717F6D004E862F /* Main */,
+				0D4324941C9ADC3A0030290B /* Profile（我） */,
 				0D505D0A1C706395004E862F /* Others */,
 				0D505B011C704FFB004E862F /* Lib */,
 			);
@@ -987,13 +987,13 @@
 				0D505BB21C70588B004E862F /* GoogleSharedStatus */,
 				0D505BB51C70588B004E862F /* ProcessOne */,
 				0D505BB81C70588B004E862F /* Reconnect */,
-				0D505BBB1C70588B004E862F /* Roster */,
+				0D505BBB1C70588B004E862F /* Roster（好友列表） */,
 				0D505BD31C70588B004E862F /* SystemInputActivityMonitor */,
 				0D505BD61C70588B004E862F /* XEP-0009 */,
 				0D505BDD1C70588B004E862F /* XEP-0012 */,
 				0D505BE21C70588B004E862F /* XEP-0016 */,
 				0D505BE51C70588B004E862F /* XEP-0045 */,
-				0D505C091C70588B004E862F /* XEP-0054 */,
+				0D505C091C70588B004E862F /* XEP-0054(电子名片) */,
 				0D505C251C70588B004E862F /* XEP-0059 */,
 				0D505C2A1C70588B004E862F /* XEP-0060 */,
 				0D505C2F1C70588B004E862F /* XEP-0065 */,
@@ -1085,7 +1085,7 @@
 			path = Reconnect;
 			sourceTree = "<group>";
 		};
-		0D505BBB1C70588B004E862F /* Roster */ = {
+		0D505BBB1C70588B004E862F /* Roster（好友列表） */ = {
 			isa = PBXGroup;
 			children = (
 				0D505BBC1C70588B004E862F /* CoreDataStorage */,
@@ -1096,6 +1096,7 @@
 				0D505BD11C70588B004E862F /* XMPPRosterPrivate.h */,
 				0D505BD21C70588B004E862F /* XMPPUser.h */,
 			);
+			name = "Roster（好友列表）";
 			path = Roster;
 			sourceTree = "<group>";
 		};
@@ -1232,7 +1233,7 @@
 			path = MemoryStorage;
 			sourceTree = "<group>";
 		};
-		0D505C091C70588B004E862F /* XEP-0054 */ = {
+		0D505C091C70588B004E862F /* XEP-0054(电子名片) */ = {
 			isa = PBXGroup;
 			children = (
 				0D505C0A1C70588B004E862F /* CoreDataStorage */,
@@ -1253,6 +1254,7 @@
 				0D505C231C70588B004E862F /* XMPPvCardTempTel.h */,
 				0D505C241C70588B004E862F /* XMPPvCardTempTel.m */,
 			);
+			name = "XEP-0054(电子名片)";
 			path = "XEP-0054";
 			sourceTree = "<group>";
 		};

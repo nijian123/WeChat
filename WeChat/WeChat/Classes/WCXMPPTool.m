@@ -16,6 +16,10 @@
     
     XMPPvCardAvatarModule *_avatar; //电子名片的头像模块
     
+    XMPPRoster *_roster; //花名册
+    XMPPRosterCoreDataStorage *_rosterStorage; // 花名册数据存储
+    
+    
     XMPPResultBlock _resultBlock; //结果回调Block
 }
 
@@ -61,7 +65,7 @@
 singleton_implementation(WCXMPPTool)
 
 #pragma mark - 私有方法=========================
-#pragma mark 实现登录
+#pragma mark - 实现登录
 
 // 1.初始化XMPPStream
 - (void)setupStream{
@@ -69,16 +73,27 @@ singleton_implementation(WCXMPPTool)
     _xmppStream = [[XMPPStream alloc]init];
     
 #pragma mark 添加xmpp模块
-    // 1. 添加电子名片模块
+  #pragma mark   1. 添加电子名片模块
     _vCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
     _vCard = [[XMPPvCardTempModule alloc]initWithvCardStorage:_vCardStorage];
     //激活
     [_vCard activate:_xmppStream];
     
+    
+   #pragma mark  2.添加头像模块
     //电子名片模块会配合“头像模块”一起使用
-    // 2.添加头像模块
     _avatar = [[XMPPvCardAvatarModule alloc]initWithvCardTempModule:_vCard];
     [_avatar activate:_xmppStream];
+    
+    #pragma mark  3.添加'花名册'模块
+    _rosterStorage = [[XMPPRosterCoreDataStorage alloc]init];
+    _roster = [[XMPPRoster alloc]initWithRosterStorage:_rosterStorage];
+    [_roster activate:_xmppStream];
+    
+    
+    
+    
+    
     
 #warning 设置代理 -所有的代理方法都在子线程中被调用
     
@@ -94,15 +109,18 @@ singleton_implementation(WCXMPPTool)
     //取消模块
     [_avatar deactivate];
     [_vCard deactivate];
+    [_roster deactivate];
     
     //断开连接
     [_xmppStream disconnect];
     
     //清空资源
+    _xmppStream = nil;
     _vCardStorage = nil;
     _vCard = nil;
     _avatar = nil;
-    _xmppStream = nil;
+    _roster = nil;
+    _rosterStorage = nil;
     
 }
 
@@ -189,7 +207,7 @@ singleton_implementation(WCXMPPTool)
     [_xmppStream disconnect];
 }
 
-#pragma mark -私有方法 end ===============
+#pragma mark - 私有方法 end ===============
 
 //**********************************************************
 
@@ -266,7 +284,7 @@ singleton_implementation(WCXMPPTool)
 }
 
 
-#pragma mark -XMPPStreamDelegate   代理方法 end
+#pragma mark - XMPPStreamDelegate   代理方法 end
 
 
 #pragma mark - 公共方法=======================
@@ -312,7 +330,7 @@ singleton_implementation(WCXMPPTool)
     
 }
 
-#pragma mark -公共方法 end ================
+#pragma mark - 公共方法 end ================
 - (void)dealloc{
     [self teardownStream];
 }
