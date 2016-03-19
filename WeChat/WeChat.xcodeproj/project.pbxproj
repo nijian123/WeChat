@@ -171,6 +171,7 @@
 		0D505D061C70588B004E862F /* NSXMLElement+XEP_0335.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505CA31C70588B004E862F /* NSXMLElement+XEP_0335.m */; };
 		0D505D0E1C717F8A004E862F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D505D0D1C717F8A004E862F /* Login.storyboard */; };
 		0D505D151C71915E004E862F /* WCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505D141C71915E004E862F /* WCLoginViewController.m */; };
+		0D9F6DC91C9D135E00F64C41 /* WCEditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F6DC81C9D135E00F64C41 /* WCEditCardViewController.m */; };
 		0DB143DD1C71ADE600478052 /* MBProgressHUD+HM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB143D91C71ADE600478052 /* MBProgressHUD+HM.m */; };
 		0DB143DE1C71ADE600478052 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DB143DA1C71ADE600478052 /* MBProgressHUD.bundle */; };
 		0DB143DF1C71ADE600478052 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB143DC1C71ADE600478052 /* MBProgressHUD.m */; };
@@ -534,6 +535,8 @@
 		0D505D0D1C717F8A004E862F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0D505D131C71915E004E862F /* WCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WCLoginViewController.h; path = WeChat/WCLoginViewController.h; sourceTree = SOURCE_ROOT; };
 		0D505D141C71915E004E862F /* WCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WCLoginViewController.m; path = WeChat/WCLoginViewController.m; sourceTree = SOURCE_ROOT; };
+		0D9F6DC71C9D135E00F64C41 /* WCEditCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCEditCardViewController.h; sourceTree = "<group>"; };
+		0D9F6DC81C9D135E00F64C41 /* WCEditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCEditCardViewController.m; sourceTree = "<group>"; };
 		0DB143D81C71ADE600478052 /* MBProgressHUD+HM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HM.h"; sourceTree = "<group>"; };
 		0DB143D91C71ADE600478052 /* MBProgressHUD+HM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HM.m"; sourceTree = "<group>"; };
 		0DB143DA1C71ADE600478052 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -586,6 +589,8 @@
 				0D4324971C9ADCAB0030290B /* WCMeTableViewController.m */,
 				0D4324B61C9C2A600030290B /* WCProfileViewController.h */,
 				0D4324B71C9C2A600030290B /* WCProfileViewController.m */,
+				0D9F6DC71C9D135E00F64C41 /* WCEditCardViewController.h */,
+				0D9F6DC81C9D135E00F64C41 /* WCEditCardViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1717,6 +1722,7 @@
 				TargetAttributes = {
 					0D505AC91C704F83004E862F = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 7H2499GVNY;
 					};
 					0D505AE21C704F83004E862F = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1876,6 +1882,7 @@
 				0D505CCC1C70588B004E862F /* XMPPvCardCoreDataStorage.m in Sources */,
 				0D505CDB1C70588B004E862F /* TURNSocket.m in Sources */,
 				0D4324B51C9B0BD80030290B /* WCRegisterViewController.m in Sources */,
+				0D9F6DC91C9D135E00F64C41 /* WCEditCardViewController.m in Sources */,
 				0D505CB21C70588B004E862F /* XMPPRosterMemoryStorage.m in Sources */,
 				0D505B181C7050C2004E862F /* DDAbstractDatabaseLogger.m in Sources */,
 				0D505CC11C70588B004E862F /* XMPPRoomHybridStorage.m in Sources */,
@@ -2015,6 +2022,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2034,6 +2042,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-all_load ";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2058,6 +2067,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2070,6 +2080,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-all_load ";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2080,6 +2091,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeChat/WeChat-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -2093,6 +2106,7 @@
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkofsomethingclever.WeChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2102,6 +2116,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeChat/WeChat-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -2115,6 +2131,7 @@
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkofsomethingclever.WeChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -16,6 +16,10 @@
 #import "CategoryWF.h"
 #import "WCXMPPTool.h"
 #import "MBProgressHUD+HM.h"
+#import "XMPPvCardTemp.h"
+#import "Singleton.h"
+#import "XMPPFramework.h"
+
 
     //自定义日志
     #ifdef DEBUG
