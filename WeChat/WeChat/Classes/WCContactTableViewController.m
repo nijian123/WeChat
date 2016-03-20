@@ -123,6 +123,14 @@
             cell.detailTextLabel.text = @"见鬼了";
             break;
     }
+    //显示好友头像
+    if (user.photo) { //默认情况不是程序一启动就有图像
+        cell.imageView.image = user.photo;
+    }else{
+        // 从服务器获取头像
+        NSData *imgData = [[WCXMPPTool sharedWCXMPPTool].avatar photoDataForJID:user.jid];
+        cell.imageView.image = [UIImage imageWithData:imgData];
+    }
     
     return cell;
 }
@@ -131,10 +139,46 @@
 
 // 监听的方法 状态改变
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    
     [self.tableView reloadData];
+    
+}
+
+
+#pragma mark - 代理 实现delete按钮
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    //获取好友
+     XMPPUserCoreDataStorageObject *user = _resultContr.fetchedObjects[indexPath.row];
+    
+    //删除好友
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        [[WCXMPPTool sharedWCXMPPTool].roster removeUser:user.jid];
+       
+        
+    }
+    
+        
+    
+    
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

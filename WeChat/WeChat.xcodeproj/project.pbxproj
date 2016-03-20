@@ -173,6 +173,7 @@
 		0D505D151C71915E004E862F /* WCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505D141C71915E004E862F /* WCLoginViewController.m */; };
 		0D9F6DC91C9D135E00F64C41 /* WCEditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F6DC81C9D135E00F64C41 /* WCEditCardViewController.m */; };
 		0D9F6DCD1C9D726400F64C41 /* WCContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F6DCC1C9D726400F64C41 /* WCContactTableViewController.m */; };
+		0D9F6DD01C9EADEE00F64C41 /* WCAddContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F6DCF1C9EADEE00F64C41 /* WCAddContactTableViewController.m */; };
 		0DB143DD1C71ADE600478052 /* MBProgressHUD+HM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB143D91C71ADE600478052 /* MBProgressHUD+HM.m */; };
 		0DB143DE1C71ADE600478052 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DB143DA1C71ADE600478052 /* MBProgressHUD.bundle */; };
 		0DB143DF1C71ADE600478052 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB143DC1C71ADE600478052 /* MBProgressHUD.m */; };
@@ -540,6 +541,8 @@
 		0D9F6DC81C9D135E00F64C41 /* WCEditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCEditCardViewController.m; sourceTree = "<group>"; };
 		0D9F6DCB1C9D726400F64C41 /* WCContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCContactTableViewController.h; sourceTree = "<group>"; };
 		0D9F6DCC1C9D726400F64C41 /* WCContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCContactTableViewController.m; sourceTree = "<group>"; };
+		0D9F6DCE1C9EADEE00F64C41 /* WCAddContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCAddContactTableViewController.h; sourceTree = "<group>"; };
+		0D9F6DCF1C9EADEE00F64C41 /* WCAddContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCAddContactTableViewController.m; sourceTree = "<group>"; };
 		0DB143D81C71ADE600478052 /* MBProgressHUD+HM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HM.h"; sourceTree = "<group>"; };
 		0DB143D91C71ADE600478052 /* MBProgressHUD+HM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HM.m"; sourceTree = "<group>"; };
 		0DB143DA1C71ADE600478052 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -1644,6 +1647,8 @@
 			children = (
 				0D9F6DCB1C9D726400F64C41 /* WCContactTableViewController.h */,
 				0D9F6DCC1C9D726400F64C41 /* WCContactTableViewController.m */,
+				0D9F6DCE1C9EADEE00F64C41 /* WCAddContactTableViewController.h */,
+				0D9F6DCF1C9EADEE00F64C41 /* WCAddContactTableViewController.m */,
 			);
 			name = "Contacts(通讯录)";
 			sourceTree = "<group>";
@@ -1815,6 +1820,7 @@
 				0D505CE01C70588B004E862F /* XMPPDateTimeProfiles.m in Sources */,
 				0D505B1B1C7050C2004E862F /* DDLog.m in Sources */,
 				0D505D031C70588B004E862F /* NSXMLElement+XEP_0297.m in Sources */,
+				0D9F6DD01C9EADEE00F64C41 /* WCAddContactTableViewController.m in Sources */,
 				0D505CAF1C70588B004E862F /* XMPPRosterCoreDataStorage.m in Sources */,
 				0D505CEE1C70588B004E862F /* XMPPMessageArchiving.m in Sources */,
 				0D505CDF1C70588B004E862F /* NSDate+XMPPDateTimeProfiles.m in Sources */,

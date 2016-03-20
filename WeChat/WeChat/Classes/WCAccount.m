@@ -12,7 +12,8 @@
 #define kLoginKey @"login"
 
 static NSString *domain = @"promote.cache-dns.local";
-static NSString *host = @"192.168.1.107";
+static NSString *host = @"127.0.0.1";
+//static NSString *host = @"192.168.1.107";
 static int port = 5222;
 
 @implementation WCAccount

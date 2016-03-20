@@ -25,6 +25,9 @@ typedef void (^XMPPResultBlock) (XMPPResultType);
 @interface WCXMPPTool : NSObject
 singleton_interface(WCXMPPTool)
 
+
+@property (strong, nonatomic ,readonly) XMPPStream *xmppStream; //与服务器交互的核心类
+
 // 标识连接服务器时，是登录连接还是注册连接
 // NO代表登录   YES 代表注册
 @property (assign,nonatomic,getter=isRegisterOperation) BOOL registerOperation;
@@ -38,6 +41,8 @@ singleton_interface(WCXMPPTool)
 
 @property (strong, nonatomic ,readonly) XMPPRoster *roster; //花名册
 @property (strong, nonatomic ,readonly) XMPPRosterCoreDataStorage *rosterStorage; // 花名册数据存储
+
+@property (strong, nonatomic ,readonly) XMPPvCardAvatarModule *avatar; //电子名片的头像模块
 
 
 //XMPP用户登录
