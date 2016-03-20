@@ -172,6 +172,7 @@
 		0D505D0E1C717F8A004E862F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D505D0D1C717F8A004E862F /* Login.storyboard */; };
 		0D505D151C71915E004E862F /* WCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D505D141C71915E004E862F /* WCLoginViewController.m */; };
 		0D9F6DC91C9D135E00F64C41 /* WCEditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F6DC81C9D135E00F64C41 /* WCEditCardViewController.m */; };
+		0D9F6DCD1C9D726400F64C41 /* WCContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9F6DCC1C9D726400F64C41 /* WCContactTableViewController.m */; };
 		0DB143DD1C71ADE600478052 /* MBProgressHUD+HM.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB143D91C71ADE600478052 /* MBProgressHUD+HM.m */; };
 		0DB143DE1C71ADE600478052 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DB143DA1C71ADE600478052 /* MBProgressHUD.bundle */; };
 		0DB143DF1C71ADE600478052 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB143DC1C71ADE600478052 /* MBProgressHUD.m */; };
@@ -537,6 +538,8 @@
 		0D505D141C71915E004E862F /* WCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WCLoginViewController.m; path = WeChat/WCLoginViewController.m; sourceTree = SOURCE_ROOT; };
 		0D9F6DC71C9D135E00F64C41 /* WCEditCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCEditCardViewController.h; sourceTree = "<group>"; };
 		0D9F6DC81C9D135E00F64C41 /* WCEditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCEditCardViewController.m; sourceTree = "<group>"; };
+		0D9F6DCB1C9D726400F64C41 /* WCContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCContactTableViewController.h; sourceTree = "<group>"; };
+		0D9F6DCC1C9D726400F64C41 /* WCContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCContactTableViewController.m; sourceTree = "<group>"; };
 		0DB143D81C71ADE600478052 /* MBProgressHUD+HM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HM.h"; sourceTree = "<group>"; };
 		0DB143D91C71ADE600478052 /* MBProgressHUD+HM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HM.m"; sourceTree = "<group>"; };
 		0DB143DA1C71ADE600478052 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -695,7 +698,7 @@
 			children = (
 				0D505D0B1C717F3A004E862F /* Login */,
 				0D505D0C1C717F6D004E862F /* Main */,
-				0D4324941C9ADC3A0030290B /* Profile（我） */,
+				0DB143E01C71B79800478052 /* Model */,
 				0D505D0A1C706395004E862F /* Others */,
 				0D505B011C704FFB004E862F /* Lib */,
 			);
@@ -1616,9 +1619,10 @@
 		0D505D0C1C717F6D004E862F /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				0D4324AD1C9B01EE0030290B /* Tool */,
 				0D505AD61C704F83004E862F /* Main.storyboard */,
-				0DB143E01C71B79800478052 /* Model */,
+				0D4324AD1C9B01EE0030290B /* Tool */,
+				0D4324941C9ADC3A0030290B /* Profile（我） */,
+				0D9F6DCA1C9D717800F64C41 /* Contacts(通讯录) */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -1633,6 +1637,15 @@
 				0D4324B41C9B0BD80030290B /* WCRegisterViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		0D9F6DCA1C9D717800F64C41 /* Contacts(通讯录) */ = {
+			isa = PBXGroup;
+			children = (
+				0D9F6DCB1C9D726400F64C41 /* WCContactTableViewController.h */,
+				0D9F6DCC1C9D726400F64C41 /* WCContactTableViewController.m */,
+			);
+			name = "Contacts(通讯录)";
 			sourceTree = "<group>";
 		};
 		0DB143D71C71ADE600478052 /* MBProgessHUD(提示信息) */ = {
@@ -1884,6 +1897,7 @@
 				0D505CCC1C70588B004E862F /* XMPPvCardCoreDataStorage.m in Sources */,
 				0D505CDB1C70588B004E862F /* TURNSocket.m in Sources */,
 				0D4324B51C9B0BD80030290B /* WCRegisterViewController.m in Sources */,
+				0D9F6DCD1C9D726400F64C41 /* WCContactTableViewController.m in Sources */,
 				0D9F6DC91C9D135E00F64C41 /* WCEditCardViewController.m in Sources */,
 				0D505CB21C70588B004E862F /* XMPPRosterMemoryStorage.m in Sources */,
 				0D505B181C7050C2004E862F /* DDAbstractDatabaseLogger.m in Sources */,

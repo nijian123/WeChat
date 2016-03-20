@@ -36,6 +36,9 @@ singleton_interface(WCXMPPTool)
 @property (strong,nonatomic,readonly) XMPPvCardCoreDataStorage *vCardStorage;
 
 
+@property (strong, nonatomic ,readonly) XMPPRoster *roster; //花名册
+@property (strong, nonatomic ,readonly) XMPPRosterCoreDataStorage *rosterStorage; // 花名册数据存储
+
 
 //XMPP用户登录
 - (void)xmppLogin:(XMPPResultBlock)resultBlock;
