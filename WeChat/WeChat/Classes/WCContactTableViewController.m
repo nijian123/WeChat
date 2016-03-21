@@ -7,6 +7,7 @@
 //
 
 #import "WCContactTableViewController.h"
+#import "WCChatViewController.h"
 
 @interface WCContactTableViewController ()<NSFetchedResultsControllerDelegate>{
     NSFetchedResultsController *_resultContr;
@@ -66,7 +67,12 @@
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES];
     request.sortDescriptors = @[sort];
     
-    //3.执行请求
+    //过滤
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"subscription != %@",@"none"];
+    request.predicate = pre;
+    
+    
+    //3.执行请求 加载好友
     _resultContr = [[NSFetchedResultsController alloc]initWithFetchRequest:request managedObjectContext:rosterContext sectionNameKeyPath:nil cacheName:nil];
     _resultContr.delegate = self;
     NSError *error = nil;
@@ -89,6 +95,27 @@
     return _resultContr.fetchedObjects.count;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    XMPPJID *friendJid = [_resultContr.fetchedObjects[indexPath.row] jid];
+    
+    //进入聊天控制器
+    [self performSegueWithIdentifier:@"toChatVcSegue" sender:friendJid];
+    
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    id destVc = segue.destinationViewController;
+    if ([destVc isKindOfClass:[WCChatViewController class]]) {
+        WCChatViewController *chatVc = destVc;
+        chatVc.friendJid = sender;
+    }
+    
+}
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ID = @"ContactCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -100,7 +127,7 @@
     
     cell.textLabel.text = user.displayName;
     
-    //监听
+#pragma mark 设置监听
     [user addObserver:self forKeyPath:@"sectionNum" options:NSKeyValueObservingOptionNew context:nil];
     
     //标识用户是否在线
@@ -137,12 +164,14 @@
 
 
 
-// 监听的方法 状态改变
+#pragma mark 监听的方法 状态改变
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     
     [self.tableView reloadData];
     
 }
+
+
 
 
 #pragma mark - 代理 实现delete按钮

@@ -81,8 +81,10 @@ singleton_implementation(WCXMPPTool)
     _roster = [[XMPPRoster alloc]initWithRosterStorage:_rosterStorage];
     [_roster activate:_xmppStream];
     
-    
-    
+    #pragma mark  4.添加'消息'模块
+    _msgArchivingStorage = [[XMPPMessageArchivingCoreDataStorage alloc]init];
+    _msgArchiving = [[XMPPMessageArchiving alloc]initWithMessageArchivingStorage:_msgArchivingStorage];
+    [_msgArchiving activate:_xmppStream];
     
     
     
@@ -101,6 +103,7 @@ singleton_implementation(WCXMPPTool)
     [_avatar deactivate];
     [_vCard deactivate];
     [_roster deactivate];
+    [_msgArchiving deactivate];
     
     //断开连接
     [_xmppStream disconnect];
@@ -112,6 +115,8 @@ singleton_implementation(WCXMPPTool)
     _avatar = nil;
     _roster = nil;
     _rosterStorage = nil;
+    _msgArchiving = nil;
+    _msgArchivingStorage = nil;
     
 }
 

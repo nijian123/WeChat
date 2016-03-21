@@ -13,7 +13,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="r9z-zU-WA1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="p5V-Wl-hDU" kind="relationship" relationship="viewControllers" id="9KZ-x0-GaY"/>
@@ -170,10 +170,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="HxG-Ej-0jf" kind="show" identifier="toChatVcSegue" id="dHO-gs-dAj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JgV-XG-c2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375" y="1253"/>
+            <point key="canvasLocation" x="1439" y="1661"/>
         </scene>
         <!--添加好友-->
         <scene sceneID="2qk-ed-zbL">
@@ -228,7 +231,82 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8h-SQ-yCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2161" y="1253"/>
+            <point key="canvasLocation" x="2287" y="2219"/>
+        </scene>
+        <!--聊天界面-->
+        <scene sceneID="tfl-Tr-c6l">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="HxG-Ej-0jf" customClass="WCChatViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tjf-u3-1ua"/>
+                        <viewControllerLayoutGuide type="bottom" id="DjR-VC-1dh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xtf-Yv-mwc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-TZ-Qe2">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" id="SDu-VE-cwt">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SDu-VE-cwt" id="P7f-yK-64v">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="HxG-Ej-0jf" id="gj9-Rc-LLT"/>
+                                    <outlet property="delegate" destination="HxG-Ej-0jf" id="cEj-XV-2yK"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHC-Q8-Z8L" userLabel="输入框容器">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ik-Zn-yS5" userLabel="文本框">
+                                        <rect key="frame" x="55" y="6" width="483" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7Hi-hf-rEI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="HxG-Ej-0jf" id="nRF-Wr-uQt"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6Ik-Zn-yS5" firstAttribute="leading" secondItem="GHC-Q8-Z8L" secondAttribute="leading" constant="55" id="8U4-PS-yTW"/>
+                                    <constraint firstItem="6Ik-Zn-yS5" firstAttribute="top" secondItem="GHC-Q8-Z8L" secondAttribute="top" constant="6" id="V7u-vZ-iWg"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Ik-Zn-yS5" secondAttribute="trailing" constant="62" id="eMi-jr-kL0"/>
+                                    <constraint firstAttribute="height" constant="44" id="vJ3-Kw-hS0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GHC-Q8-Z8L" firstAttribute="bottom" secondItem="Xtf-Yv-mwc" secondAttribute="bottomMargin" id="4Wx-8s-JmS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GHC-Q8-Z8L" secondAttribute="trailing" constant="-20" id="Gqe-Xc-Skj"/>
+                            <constraint firstAttribute="trailing" secondItem="S6d-TZ-Qe2" secondAttribute="trailing" id="MkT-yx-G7B"/>
+                            <constraint firstItem="GHC-Q8-Z8L" firstAttribute="leading" secondItem="Xtf-Yv-mwc" secondAttribute="leadingMargin" constant="-20" id="N8N-2n-xTs"/>
+                            <constraint firstItem="S6d-TZ-Qe2" firstAttribute="top" secondItem="Tjf-u3-1ua" secondAttribute="bottom" id="NDU-Ag-ICN"/>
+                            <constraint firstItem="S6d-TZ-Qe2" firstAttribute="leading" secondItem="Xtf-Yv-mwc" secondAttribute="leading" id="TpP-im-gha"/>
+                            <constraint firstItem="S6d-TZ-Qe2" firstAttribute="centerY" secondItem="Xtf-Yv-mwc" secondAttribute="centerY" constant="10" id="hMf-hG-Hz2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="聊天界面" id="Yc9-vi-Ea8"/>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="4Wx-8s-JmS" id="6cW-GU-L1T"/>
+                        <outlet property="tableView" destination="S6d-TZ-Qe2" id="3x4-PU-Lar"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xq4-cc-YOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2277" y="1488"/>
         </scene>
         <!--我-->
         <scene sceneID="ZwP-OL-UdQ">
@@ -287,7 +365,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZF-Yt-dqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1370" y="2136"/>
+            <point key="canvasLocation" x="1466" y="2944"/>
         </scene>
         <!--个人信息-->
         <scene sceneID="531-We-7js">
@@ -307,8 +385,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="An5-IZ-Bs7">
-                                                    <rect key="frame" x="493" y="21" width="60" height="60"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="An5-IZ-Bs7">
+                                                    <rect key="frame" x="499" y="21" width="60" height="60"/>
                                                     <color key="backgroundColor" red="0.64237820769999998" green="1" blue="0.63005001810000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="8u8-7C-zmo"/>
@@ -523,7 +601,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLQ-8V-mRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2103" y="2138"/>
+            <point key="canvasLocation" x="2199" y="2946"/>
         </scene>
         <!--Title-->
         <scene sceneID="BFb-mT-0jB">
@@ -578,7 +656,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ro9-mH-wFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2843" y="2130"/>
+            <point key="canvasLocation" x="2939" y="2938"/>
         </scene>
         <!--我-->
         <scene sceneID="hvW-zd-4Ws">
@@ -595,7 +673,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9T-cz-jXX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="555" y="2156"/>
+            <point key="canvasLocation" x="651" y="2964"/>
         </scene>
         <!--通讯录-->
         <scene sceneID="NOR-p0-psc">
@@ -612,7 +690,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ni2-8c-uZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="555" y="1253"/>
+            <point key="canvasLocation" x="523" y="1669"/>
         </scene>
     </scenes>
 </document>

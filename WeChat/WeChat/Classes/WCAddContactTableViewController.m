@@ -60,7 +60,20 @@
     
     // 3.添加好友(订阅)
     [[WCXMPPTool sharedWCXMPPTool].roster subscribePresenceToUser:userjid];
+   
     
+    /*添加好友在现有openfire存在的问题
+     1.添加不存在的好友，通讯录里面也现示了好友
+     解决办法1. 服务器可以拦截好友添加的请求，如当前数据库没有好友，不要返回信息
+     <presence type="subscribe" to="werqqrwe@teacher.local"><x xmlns="vcard-temp:x:update"><photo>b5448c463bc4ea8dae9e0fe65179e1d827c740d0</photo></x></presence>
+     
+     解决办法2.过滤数据库的Subscription字段查询请求
+     none 对方没有同意添加好友
+     to 发给对方的请求
+     from 别人发来的请求
+     both 双方互为好友
+     
+     */
     
     
     

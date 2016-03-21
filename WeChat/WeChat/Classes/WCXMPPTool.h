@@ -44,6 +44,10 @@ singleton_interface(WCXMPPTool)
 
 @property (strong, nonatomic ,readonly) XMPPvCardAvatarModule *avatar; //电子名片的头像模块
 
+@property (strong, nonatomic ,readonly) XMPPMessageArchiving *msgArchiving;
+
+@property (strong, nonatomic ,readonly) XMPPMessageArchivingCoreDataStorage *msgArchivingStorage;
+
 
 //XMPP用户登录
 - (void)xmppLogin:(XMPPResultBlock)resultBlock;
