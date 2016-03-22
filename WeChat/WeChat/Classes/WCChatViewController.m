@@ -8,13 +8,16 @@
 
 #import "WCChatViewController.h"
 
-@interface WCChatViewController ()<NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface WCChatViewController ()<NSFetchedResultsControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /**
  *  输入框容器距离底部的约束
  */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+
+
+- (IBAction)imgChooseBtnClick:(id)sender;
 
 @end
 
@@ -87,8 +90,47 @@
     //获取聊天信息
     XMPPMessageArchiving_Message_CoreDataObject *msgObj = _resultContr.fetchedObjects[indexPath.row];
     
+    //判断消息的类型，是否有附件
+    // 1.获取原始的xml数据
+    XMPPMessage *message = msgObj.message;
     
-    cell.textLabel.text = msgObj.body;
+    // 获取附件类型
+    NSString *bodyType = [message attributeStringValueForName:@"bodyType"];
+    
+    if ([bodyType isEqualToString:@"image"]) { // 图片
+        // 2.遍历message的子节点
+        NSArray *child = message.children;
+        for (XMPPElement *note in child) {
+            // 获取节点的名字
+            NSString *nameStr = [note name];
+            if ([nameStr isEqualToString:@"attachment"]) {
+                WCLog(@"获取到附件");
+                // 获取附件字符串，然后转成NSData，接着转成图片
+                NSString *imgBase64Str = [note stringValue];
+                
+                NSData *imgData = [[NSData alloc]initWithBase64EncodedString:imgBase64Str options:0];
+                
+                UIImage *img = [UIImage imageWithData:imgData];
+                cell.imageView.image = img;
+                
+            }
+            
+        }
+
+        
+    }
+    if ([bodyType isEqualToString:@"sound"]) { //音频
+        
+        
+    }else{ // 纯文本
+        
+        cell.textLabel.text = msgObj.body;
+
+    }
+    
+    
+    
+    
     
     
     return cell;
@@ -105,7 +147,7 @@
     
     
     self.bottomConstraint.constant = -kbHeight;
-    NSLog(@"%f",self.bottomConstraint.constant);
+    
 }
 
 
@@ -141,6 +183,111 @@
     [self.view endEditing:YES];
     
 }
+
+
+
+#pragma mark 文件发送(以图片发送为例)
+- (IBAction)imgChooseBtnClick:(id)sender {
+    
+    //从图片库选取图片
+    UIImagePickerController *imgPC = [[UIImagePickerController alloc] init];
+    imgPC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    //imgPC.allowsEditing = YES;
+    imgPC.delegate = self;
+    
+    [self presentViewController:imgPC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
+    
+    UIImage *img = info[UIImagePickerControllerOriginalImage];
+    
+    // 发送附件
+    //[self sendAttachmentWithImage:img];
+    
+    [self sendAttachmentWithData:UIImagePNGRepresentation(img) bodyType:@"image"];
+    
+    //移除图片选择控制器
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
+#pragma mark 发送图片附件
+
+- (void)sendAttachmentWithData:(NSData *)data bodyType:(NSString *)bodyType{
+    /** 创建子节点
+     *  将子节点添加到发送消息中 （图片需要转码）
+     *  发送
+     */
+    
+    
+    // 发送图片
+    XMPPMessage *msg = [XMPPMessage messageWithType:@"chat" to:self.friendJid];
+    
+    //设置类型
+    [msg addAttributeWithName:@"bodyType" stringValue:bodyType];
+    
+    
+#pragma mark 没有body就不认
+    [msg addBody:bodyType];
+
+    //[msg addBody:@"image"];
+    //    [msg addBody:@"sound"];
+    //    [msg addBody:@"doc"];
+    //    [msg addBody:@"xls"];
+    
+    //把附件经过base64编码转成字符串
+   
+    NSString *base64Str = [data base64EncodedStringWithOptions:0];
+    
+   
+    
+    //定义附件  定义一个子节点
+    XMPPElement *attachmet = [XMPPElement elementWithName:@"attachment" stringValue:base64Str];
+    
+    //添加子节点
+    [msg addChild:attachmet];
+    
+    [[WCXMPPTool sharedWCXMPPTool].xmppStream sendElement:msg];
+    
+}
+
+
+
+//- (void)sendAttachmentWithImage:(UIImage *)img{
+//    /** 创建子节点
+//     *  将子节点添加到发送消息中 （图片需要转码）
+//     *  发送
+//     */
+//    
+//    
+//    // 发送图片
+//    XMPPMessage *msg = [XMPPMessage messageWithType:@"chat" to:self.friendJid];
+// 
+//    #pragma mark 没有body就不认
+//    [msg addBody:@"image"];
+//    //    [msg addBody:@"sound"];
+//    //    [msg addBody:@"doc"];
+//    //    [msg addBody:@"xls"];
+//    
+//    //把图片经过base64编码转成字符串
+//    // 1. 吧图片转成NSData
+//    NSData *imgData = UIImagePNGRepresentation(img);
+//    
+//    // 2.把data转成base64的字符串
+//    NSString *imgBaseStr = [imgData base64EncodedStringWithOptions:0];
+//    
+//    //定义附件  定义一个子节点
+//    XMPPElement *attachmet = [XMPPElement elementWithName:@"attachment" stringValue:imgBaseStr];
+//    
+//    //添加子节点
+//    [msg addChild:attachmet];
+//    
+//    [[WCXMPPTool sharedWCXMPPTool].xmppStream sendElement:msg];
+//
+//}
 
 
 
