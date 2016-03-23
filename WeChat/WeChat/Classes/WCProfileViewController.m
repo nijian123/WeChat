@@ -186,7 +186,17 @@
     
     myvCard.title = self.telLabel.text;
     myvCard.note = self.telLabel.text;
-    myvCard.mailer = self.emailLabel.text;
+    
+    
+    // 解析邮箱
+    //myvCard.mailer = self.emailLabel.text;
+    
+    NSArray *emails = myvCard.emailAddresses;
+    
+    if (emails.count > 0) {
+        self.emailLabel.text = emails[0];
+    }
+    
     
     //把数据保存到服务器
     //内部实现数据上传 是把整个电子名片数据都上传一次
